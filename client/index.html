@@ -1,0 +1,73 @@
+<html>
+<head>
+	<title>Image Viewer Plugin</title>
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+	<style>
+		.body{
+			width: 100% !important;
+		}
+	</style>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/jquery-ui/jquery-ui.js"></script>
+	<script src="bower_components/panzoom/dist/jquery.panzoom.js"></script>
+	<script src="jquery.touch-punch.js"></script>
+	<script src="jquery.scrollbar.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="app/app.module.js"></script>
+	<script src="app/app.config.js"></script>
+	<script src= "guest/model/admin.factory.js"></script>
+	<!-- <script src="hammer.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/dark-hive/jquery-ui.css" />
+
+	<link rel="stylesheet" type="text/css" href="image-viewer-plugin.css" />
+	<script type="text/javascript">
+		angular.module('myApp',[]).controller('myCtrl',function($scope,adminFactory){
+			activate();
+			function activate(){
+				adminFactory.getImages().then((res)=>{$scope.images = res.data},(err)=>{console.error(err)});
+			}
+		}).factory('adminFactory',function($q,$http,$rootScope){
+			return{
+				getImages : function(){
+					var defer = $q.defer();
+					$http.get("http://132.140.160.119/yash_shukla/project_2/server/scan.php")
+					.then(
+						function(response){defer.resolve(response);},
+						function(error){defer.reject(error);}
+						);
+					return defer.promise;
+				}
+			}
+		})
+
+		
+	</script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<h1>Slider</h1>
+	<div>
+
+		<img src="{{image.path}}" data-caption="{{image.caption}}" ng-repeat="image in images" style="margin: 10px; width: 250px" class="viewer-img">
+
+
+
+
+	</div>
+	<!-- IMG VIEWER -->
+	<div id="imgHolder" class="parent" style="">
+		<button id="viewer-img-zoom-in" >+</button>
+		<button id="viewer-img-zoom-out">-</button>
+		<button id="viewer-img-close">x</button>
+		<img draggable="true"  id="previewImg" class="child ui-resizable" >
+		<h4 id="captionHolder" style=""></h4>
+		<button id="viewer-img-rotate" > &cudarrr;</button>
+		<button id="viewer-img-nxt" >&#10140;</button>
+		<button id="viewer-img-prev" style="transform: rotate(180deg); padding-bottom: 7px">&#10140;</button>
+
+		<ul id="viewer-img-reel"></ul>
+	</div>
+	<script src="image-viewer-plugin.js"></script>
+</body>
+
+</html>

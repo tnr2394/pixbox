@@ -1,0 +1,14 @@
+{
+  "name": "project_2",
+  "homepage": "https://github.com/tnr2394/tnraocollege",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

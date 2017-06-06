@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FileUplode</title>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="app/app.module.js"></script>
+	<script src="app/app.config.js"></script>
+	<script src= "guest/model/admin.factory.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		});
+	</script>
+</head>
+<body ng-app="fileUplode">
+	<h1>Slider</h1>
+	<div ng-controller="addImageCtrl">
+		<div style="width: 50%; height:auto ;text-align: center;">
+			<img ng-src="../server/images/{{image}}" width="300px" height="300px">
+		</div>
+	</div>
+</body>
+<script>
+	angular.module('fileUplode')
+	.controller('addImageCtrl', ['$scope','$rootScope','adminFactory',function($scope,$rootScope,adminFactory){
+		$(window).on('keydown',function(e){
+			if(e.which == 39) $scope.next();
+			if(e.which == 37) $scope.previous();
+		})
+
+		$scope.j = 0;
+		function CurrentSlide(j){
+			for (var i =  0 ; i <= ($scope.images.length); i++)  if($scope.j == i) $scope.$apply(function(){$scope.image = $scope.images[i].path;});
+		}
+		$scope.previous = function(){
+			if ($scope.j > 0)  CurrentSlide($scope.j--);
+			else CurrentSlide($scope.j = $scope.images.length - 1);
+		}
+		$scope.next = function(){
+			if ($scope.j < ($scope.images.length - 1))  CurrentSlide($scope.j++);
+			else CurrentSlide($scope.j = 0);
+		}
+		activate();
+		function activate()
+		{
+			adminFactory.getImages()
+			.then(function(response){
+				$scope.images = response.data;
+				$scope.image = $scope.images[$scope.j].path;
+
+			},function(error){
+				console.error(error);
+			});	
+		}
+	}]);
+
+</script>
+</html>
