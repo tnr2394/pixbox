@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title>Image Viewer Plugin</title>
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+	<style>
+		.body{
+			width: 100% !important;
+		}
+		.image-grid{
+			max-height: 250px;
+			max-width: 250px;
+			margin:25px;
+			border-style: solid;
+			border-color: #111;
+		}
+		.bg-gradient{
+			background: rgba(76,76,76,1);
+			background: -moz-linear-gradient(left, rgba(76,76,76,1) 0%, rgba(89,89,89,0.94) 12%, rgba(102,102,102,0.87) 25%, rgba(71,71,71,0.8) 39%, rgba(44,44,44,0.75) 50%, rgba(0,0,0,0.74) 51%, rgba(17,17,17,0.69) 60%, rgba(43,43,43,0.61) 76%, rgba(28,28,28,0.54) 91%, rgba(19,19,19,0.49) 100%);
+			background: -webkit-gradient(left top, right top, color-stop(0%, rgba(76,76,76,1)), color-stop(12%, rgba(89,89,89,0.94)), color-stop(25%, rgba(102,102,102,0.87)), color-stop(39%, rgba(71,71,71,0.8)), color-stop(50%, rgba(44,44,44,0.75)), color-stop(51%, rgba(0,0,0,0.74)), color-stop(60%, rgba(17,17,17,0.69)), color-stop(76%, rgba(43,43,43,0.61)), color-stop(91%, rgba(28,28,28,0.54)), color-stop(100%, rgba(19,19,19,0.49)));
+			background: -webkit-linear-gradient(left, rgba(76,76,76,1) 0%, rgba(89,89,89,0.94) 12%, rgba(102,102,102,0.87) 25%, rgba(71,71,71,0.8) 39%, rgba(44,44,44,0.75) 50%, rgba(0,0,0,0.74) 51%, rgba(17,17,17,0.69) 60%, rgba(43,43,43,0.61) 76%, rgba(28,28,28,0.54) 91%, rgba(19,19,19,0.49) 100%);
+			background: -o-linear-gradient(left, rgba(76,76,76,1) 0%, rgba(89,89,89,0.94) 12%, rgba(102,102,102,0.87) 25%, rgba(71,71,71,0.8) 39%, rgba(44,44,44,0.75) 50%, rgba(0,0,0,0.74) 51%, rgba(17,17,17,0.69) 60%, rgba(43,43,43,0.61) 76%, rgba(28,28,28,0.54) 91%, rgba(19,19,19,0.49) 100%);
+			background: -ms-linear-gradient(left, rgba(76,76,76,1) 0%, rgba(89,89,89,0.94) 12%, rgba(102,102,102,0.87) 25%, rgba(71,71,71,0.8) 39%, rgba(44,44,44,0.75) 50%, rgba(0,0,0,0.74) 51%, rgba(17,17,17,0.69) 60%, rgba(43,43,43,0.61) 76%, rgba(28,28,28,0.54) 91%, rgba(19,19,19,0.49) 100%);
+			background: linear-gradient(to right, rgba(76,76,76,1) 0%, rgba(89,89,89,0.94) 12%, rgba(102,102,102,0.87) 25%, rgba(71,71,71,0.8) 39%, rgba(44,44,44,0.75) 50%, rgba(0,0,0,0.74) 51%, rgba(17,17,17,0.69) 60%, rgba(43,43,43,0.61) 76%, rgba(28,28,28,0.54) 91%, rgba(19,19,19,0.49) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1 );
+		}
+	</style>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/jquery-ui/jquery-ui.js"></script>
+	<script src="bower_components/panzoom/dist/jquery.panzoom.js"></script>
+	<script src="jquery.touch-punch.js"></script>
+	<script src="jquery.scrollbar.js"></script>
+	<link rel="stylesheet" type="text/css" href="image-viewer-plugin.css" />
+	<script>
+		$(document).ready(function(){
+			$("body").pixbox();
+		});
+	</script>
+</head>
+<body class="bg-gradient">
+	<h1 style="font-family:Sans-Serif; text-align:center; padding:20px; color:white">PixBox</h1>
+	<div>
+
+		<img src="images/1.jpg" data-caption="Caption One"   class="viewer-img image-grid">
+		<img src="images/2.jpg" data-caption="Caption Two"   class="viewer-img image-grid">
+		<img src="images/3.jpg" data-caption="Caption Three"   class="viewer-img image-grid">
+		<img src="images/4.jpg" data-caption="Caption Four"   class="viewer-img image-grid">
+		<img src="images/5.jpg" data-caption="Caption Five"   class="viewer-img image-grid">
+		<img src="images/6.jpg" data-caption="Caption Six"   class="viewer-img image-grid">
+		<img src="images/7.jpg" data-caption="Caption Seven"   class="viewer-img image-grid">
+		<img src="images/8.jpg" data-caption="Caption Eight"   class="viewer-img image-grid">
+		<img src="images/9.jpg" data-caption="Caption Nine"   class="viewer-img image-grid">
+		<img src="images/10.jpg" data-caption="Caption Ten"   class="viewer-img image-grid">
+
+
+
+
+	</div>
+
+	<script src="image-viewer-plugin.js"></script>
+</body>
+
+</html>
